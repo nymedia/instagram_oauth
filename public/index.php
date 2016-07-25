@@ -1,6 +1,6 @@
 <?php
 
-$config = file_get_contents(dirname(__FILE__) . '/config.json');
+$config = file_get_contents(dirname(__FILE__) . '/../config.json');
 $config = json_decode($config, TRUE);
 
 if (isset($_GET['code'])) {

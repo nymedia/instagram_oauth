@@ -13,4 +13,5 @@ Ex: `https://instagram.nymedia.no?site=http://boardshop.no/oauth/instagram`
 
 ## Other stuff
 
-Script is located at dev2, in `/home/support/instagram_oauth`.
+1. Script is located at dev2, in `/home/support/instagram_oauth`.
+2. App details are available at [Instagram.com](https://instagram.com/developer), on the `nymediaas`-account.

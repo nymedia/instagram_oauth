@@ -1,0 +1,28 @@
+{
+    "name": "nymediaas/instagram_oauth",
+    "description": "A script to ease the authentication flow for Instagram.",
+    "type": "project",
+    "require": {
+        "silex/silex": "^2.0",
+        "symfony/yaml": "^3.1",
+        "league/oauth2-instagram": "^0.2.2"
+    },
+    "scripts": {
+        "post-install-cmd": "if [ ! -f 'config.yml' ]; then echo 'client_id: \nclient_secret: \nredirect_uri: \nwhitelist:' >> config.yml; fi",
+        "post-update-cmd": "if [ ! -f 'config.yml' ]; then echo 'client_id: \nclient_secret: \nredirect_uri: \nwhitelist:' >> config.yml; fi",
+        "test": [
+            "composer style-test"
+        ],
+        "style-test": "phpcs --standard=PSR2 -p -n ./src",
+        "style-fix": "phpcbf --standard=PSR2 -p -n ./src"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "InstagramOAuth\\": "src/InstagramOAuth/",
+            "InstagramOAuth\\Controller\\": "src/InstagramOAuth/Controller/"
+        }
+    }
+}

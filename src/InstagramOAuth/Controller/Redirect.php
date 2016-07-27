@@ -25,9 +25,9 @@ class Redirect
     {
 
         $provider = new Instagram([
-        'clientId'          => $app['settings']['client_id'],
-        'clientSecret'      => $app['settings']['client_secret'],
-        'redirectUri'       => $app['settings']['redirect_uri'],
+          'clientId'          => $app['settings']['client_id'],
+          'clientSecret'      => $app['settings']['client_secret'],
+          'redirectUri'       => $app['settings']['redirect_uri'],
         ]);
         $code = $request->get('code');
         $redirect = $request->get('state') ?: $request->get('site');
@@ -40,13 +40,13 @@ class Redirect
         if (!$code) {
             // If we don't have an authorization code then get one
             $authUrl = $provider->getAuthorizationUrl([
-            'state' => $redirect,
+              'state' => $redirect,
             ]);
             return $app->redirect($authUrl);
         } elseif ($code && $redirect) {
             // If we have code - get access token.
             $token = $provider->getAccessToken('authorization_code', [
-            'code' => $code
+              'code' => $code
             ]);
             return $app->redirect($redirect . '?access_token=' . $token->getToken());
         }
@@ -64,13 +64,13 @@ class Redirect
         // Convert path settings to a regular expression.
         // Therefore replace newlines with a logical or, /* with asterisks and the <front> with the frontpage.
         $to_replace = array(
-        '/(\r\n?|\n)/', // newlines
-        '/\\\\\*/', // asterisks
-        '/(^|\|)\\\\<front\\\\>($|\|)/' // <front>
+          '/(\r\n?|\n)/', // newlines
+          '/\\\\\*/', // asterisks
+          '/(^|\|)\\\\<front\\\\>($|\|)/' // <front>
         );
         $replacements = array(
-        '|',
-        '.*',
+          '|',
+          '.*',
         );
         $patterns_quoted = preg_quote($patterns, '/');
         $regexps = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
